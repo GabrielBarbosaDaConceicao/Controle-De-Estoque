@@ -8,44 +8,57 @@ namespace Controle_De_Estoque
 {
     internal class Produto
     {
-        public string NomeProduto { get; set; }
-        public double PrecoProduto { get; set; }
-        public int QuantidadeEstoque { get; set; }
+        private string _nomeProduto { get; set; }
+        private double _precoProduto { get; set; }
+        private int _quantidadeEstoque { get; set; }
 
-        // Sobrecarga de construtores;
-        public Produto() { }
-
-        public Produto(string NomeProduto, double PrecoProduto, int QuantidadeEstoque)
+        public Produto(string nomeProduto, double precoProduto, int quantidadeEstoque)
         {
-            this.NomeProduto = NomeProduto;
-            this.PrecoProduto = PrecoProduto;
-            this.QuantidadeEstoque = QuantidadeEstoque;
+            _nomeProduto = nomeProduto;
+            _precoProduto = precoProduto;
+            _quantidadeEstoque = quantidadeEstoque;
         }
 
-        public Produto(string NomeProduto, double PrecoProduto)
+        public string NomeProduto
         {
-            this.NomeProduto = NomeProduto;
-            this.PrecoProduto = PrecoProduto;
-            QuantidadeEstoque = 10;
+            get { return _nomeProduto; }
+            set
+            {
+                if (value != null && value.Length > 1)
+                {
+                    _nomeProduto = value;
+                }
+            }
+        }
+
+        public double PrecoProduto
+        {
+            get { return _precoProduto; }
+            set { _precoProduto = value; }
+        }
+
+        public int Quantidade
+        {
+            get { return _quantidadeEstoque; }
         }
         public double ValorTotalEmEstoque()
         {
-            return PrecoProduto * QuantidadeEstoque;
+            return _precoProduto * _quantidadeEstoque;
         }
 
         public int AdicionarProdutos(int adicionaProduto)
         {
-            return QuantidadeEstoque += adicionaProduto;
+            return _quantidadeEstoque += adicionaProduto;
         }
         
         public int RemoveProdutos(int removeProduto)
         {
-            return QuantidadeEstoque -= removeProduto;
+            return _quantidadeEstoque -= removeProduto;
         }
 
         public override string ToString()
         {
-            return $"{NomeProduto.ToUpper()}, R$ {PrecoProduto.ToString("F2", CultureInfo.InvariantCulture)}, {QuantidadeEstoque} " +
+            return $"{_nomeProduto.ToUpper()}, R$ {_precoProduto.ToString("F2", CultureInfo.InvariantCulture)}, {_quantidadeEstoque} " +
                 $"unidades, Total: R$ {ValorTotalEmEstoque().ToString("F2", CultureInfo.InvariantCulture)} ";
         }
     }

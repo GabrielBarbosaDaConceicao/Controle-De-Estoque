@@ -6,46 +6,33 @@ namespace Controle_De_Estoque
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Entre os dados do produto:");
+            Produto produto = new Produto("TV", 300.00, 10);
+
+            Console.WriteLine("Dados atuais do produto:");
+            Console.WriteLine("Produto: " + produto);
+
+            Console.WriteLine("\nEntre os dados para atualizar o produto:");
             Console.Write("Nome: ");
-            string nomeProduto = Console.ReadLine();
+            produto.NomeProduto = Console.ReadLine();
             Console.Write("Preço: ");
-            double precoProduto = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            /*
-            A quantidade foi adicionada diretamente na classe, dentro do costrutor;
-
-            Console.Write("Quantidade no estoque: ");
-            int quantidadeEstoque = int.Parse(Console.ReadLine());
-            */
-
-            // Produto (produto1) faz referência a sobrecarga de construtores;
-            Produto produto1 = new Produto();
-
-            /* Também já poderia instanciar o construtor com os dados necessarios;
+            produto.PrecoProduto = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+         
             
-            Produto produto2 = new Produto
-            {
-                NomeProduto = Bicicleta,
-                PrecoProduto = 800.00,
-                QuantidaadeEstoque = 10
-            };
-            */
-            Produto produto = new Produto(nomeProduto, precoProduto);
 
-            Console.WriteLine("\nDados do produto: " + produto);
+            Console.WriteLine("\nDados atualizados: " + produto);
 
             Console.Write("\nDigite o numero de produtos a ser adicionado ao estoque: ");
             int adicionaEstoque = int.Parse(Console.ReadLine());
             produto.AdicionarProdutos(adicionaEstoque);
 
-            Console.WriteLine("\nDados do produto: " + produto);
+            Console.WriteLine("\nDados atualizados: " + produto);
 
             Console.Write("\nDigite o numero de produtos a ser removido do estoque: ");
             int removerEstoque = int.Parse(Console.ReadLine());
             produto.RemoveProdutos(removerEstoque);
             
 
-            Console.WriteLine("\nDados do produto: " + produto);
+            Console.WriteLine("\nDados atualizados: " + produto);
         }
 
     }
