@@ -12,6 +12,9 @@ namespace Controle_De_Estoque
         public double PrecoProduto { get; set; }
         public int QuantidadeEstoque { get; set; }
 
+        // Sobrecarga de construtores;
+        public Produto() { }
+
         public Produto(string NomeProduto, double PrecoProduto, int QuantidadeEstoque)
         {
             this.NomeProduto = NomeProduto;
@@ -19,7 +22,12 @@ namespace Controle_De_Estoque
             this.QuantidadeEstoque = QuantidadeEstoque;
         }
 
-
+        public Produto(string NomeProduto, double PrecoProduto)
+        {
+            this.NomeProduto = NomeProduto;
+            this.PrecoProduto = PrecoProduto;
+            QuantidadeEstoque = 10;
+        }
         public double ValorTotalEmEstoque()
         {
             return PrecoProduto * QuantidadeEstoque;
